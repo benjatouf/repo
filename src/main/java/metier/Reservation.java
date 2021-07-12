@@ -6,6 +6,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.persistence.Version;
 
@@ -22,7 +24,12 @@ public class Reservation {
 	private Integer numero;
 	private Date dtReservation;
 	private StatutReservation confirme;
-	
+	@OneToOne
+	private Passager passager;
+	@ManyToOne
+	private Client client;
+	@ManyToOne
+	private Billet billet;
 	
 	
 	public Reservation() {
@@ -44,6 +51,18 @@ public class Reservation {
 	}
 	
 	
+	
+	public Reservation(Long id, int version, Integer numero, Date dtReservation, StatutReservation confirme,
+			Passager passager) {
+		this.id = id;
+		this.version = version;
+		this.numero = numero;
+		this.dtReservation = dtReservation;
+		this.confirme = confirme;
+		this.passager = passager;
+	}
+
+
 	public Long getId() {
 		return id;
 	}
@@ -67,6 +86,26 @@ public class Reservation {
 	}
 	public void setDtReservation(Date dtReservation) {
 		this.dtReservation = dtReservation;
+	}
+
+
+	public StatutReservation getConfirme() {
+		return confirme;
+	}
+
+
+	public void setConfirme(StatutReservation confirme) {
+		this.confirme = confirme;
+	}
+
+
+	public Passager getPassager() {
+		return passager;
+	}
+
+
+	public void setPassager(Passager passager) {
+		this.passager = passager;
 	}
 
 

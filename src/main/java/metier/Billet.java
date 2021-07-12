@@ -1,11 +1,17 @@
 package metier;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Version;
+
+import sopra.formation.model.UE;
 
 @Entity
 @Table(name = "Billet")
@@ -20,6 +26,10 @@ public class Billet {
 	private String numeroPlace;
 	private String classe;
 	private float prix;
+	@OneToMany(mappedBy = "billet")
+	private List<Reservation> reservations = new ArrayList<Reservation>();
+	@OneToMany(mappedBy = "billet")
+	private List<Vol> vols = new ArrayList<Vol>();
 	
 	
 	
