@@ -9,6 +9,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -37,7 +38,10 @@ public class Vol {
 	@ManyToOne
 	@JoinColumn(name = "Ticket")
 	private Billet billet;
-	
+	@OneToOne
+	private Aeroport arrivee;
+	@OneToOne
+	private Aeroport depart;
 	
 	public Vol(Long id, int version, Date dtDepart, String dtArrivee, StatusVol statut, int nbPlaceDispo,
 			CompagnieAerienneVol compagnieAerienneVol, Billet billet) {
