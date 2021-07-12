@@ -5,6 +5,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.persistence.Version;
 
@@ -18,16 +20,20 @@ public class Adresse {
 	private Long id;
 	@Version
 	private int version;
-	@Column(name = "rue", length = 50)
+	@Column()
 	private String rue;
 	@Column(name = "complement", length = 100)
 	private String complement;
-	@Column(name = "codePostal", length = 6)
+	@Column()
 	private String codePostal;
 	@Column(name = "ville", length = 50)
 	private String ville;
 	@Column(name = "pays", length = 25)
 	private String pays;
+	@ManyToOne
+	@JoinColumn(name="")
+	private Client client;
+	
 	
 	
 	public Adresse(Long id, int version, String rue, String complement, String codePostal, String ville, String pays) {
