@@ -32,58 +32,69 @@ public class Reservation {
 	private Billet billet;
 	
 	
+	
 	public Reservation() {
 	}
-
-
-	public Reservation(int version, Integer numero, Date dtReservation, boolean confirme) {
+	
+	public Reservation(int version, Integer numero, Date dtReservation, StatutReservation confirme, Passager passager,
+			Client client, Billet billet) {
 		this.version = version;
 		this.numero = numero;
 		this.dtReservation = dtReservation;
+		this.confirme = confirme;
+		this.passager = passager;
+		this.client = client;
+		this.billet = billet;
 	}
 
-
-	public Reservation(Long id, int version, Integer numero, Date dtReservation, boolean confirme) {
-		this.id = id;
-		this.version = version;
-		this.numero = numero;
-		this.dtReservation = dtReservation;
-	}
-	
-	
-	
 	public Reservation(Long id, int version, Integer numero, Date dtReservation, StatutReservation confirme,
-			Passager passager) {
+			Passager passager, Client client, Billet billet) {
 		this.id = id;
 		this.version = version;
 		this.numero = numero;
 		this.dtReservation = dtReservation;
 		this.confirme = confirme;
 		this.passager = passager;
+		this.client = client;
+		this.billet = billet;
 	}
 
 
 	public Long getId() {
 		return id;
 	}
+
+
 	public void setId(Long id) {
 		this.id = id;
 	}
+
+
 	public int getVersion() {
 		return version;
 	}
+
+
 	public void setVersion(int version) {
 		this.version = version;
 	}
+
+
 	public Integer getNumero() {
 		return numero;
 	}
+
+
 	public void setNumero(Integer numero) {
 		this.numero = numero;
 	}
+
+
 	public Date getDtReservation() {
 		return dtReservation;
 	}
+
+
 	public void setDtReservation(Date dtReservation) {
 		this.dtReservation = dtReservation;
 	}
@@ -109,11 +120,35 @@ public class Reservation {
 	}
 
 
+	public Client getClient() {
+		return client;
+	}
+
+
+	public void setClient(Client client) {
+		this.client = client;
+	}
+
+
+	public Billet getBillet() {
+		return billet;
+	}
+
+
+	public void setBillet(Billet billet) {
+		this.billet = billet;
+	}
+
+
 	@Override
 	public String toString() {
 		return "Reservation [id=" + id + ", version=" + version + ", numero=" + numero + ", dtReservation="
-				+ dtReservation + ", confirme=" + confirme + "]";
+				+ dtReservation + ", confirme=" + confirme + ", passager=" + passager + ", client=" + client
+				+ ", billet=" + billet + "]";
 	}
+
+
+
 
 	
 	
