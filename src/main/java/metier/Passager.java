@@ -4,9 +4,9 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.persistence.Version;
-
 
 @Entity
 @Table(name = "Passager")
@@ -20,6 +20,8 @@ public class Passager {
 	private String nom;
 	private String prenom;
 	private TypeIdentite typeIdentite;
+	@OneToOne(mappedBy = "passager")
+	private Reservation reservation;
 	
 	public Passager() {
 	}
