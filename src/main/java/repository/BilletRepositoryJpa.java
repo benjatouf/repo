@@ -8,15 +8,15 @@ import javax.persistence.EntityTransaction;
 import javax.persistence.TypedQuery;
 
 import app.Application;
-import irepository.IReservationRepository;
-import metier.Reservation;
+import irepository.IBilletRepository;
+import metier.Billet;
 
-public class ReservationRepositoryJpa implements IReservationRepository{
+public class BilletRepositoryJpa implements IBilletRepository{
 
 	@Override
-	public List<Reservation> findAll() {
+	public List<Billet> findAll() {
 
-		List<Reservation> reservations = new ArrayList<Reservation>();
+		List<Billet> billets = new ArrayList<Billet>();
 
 		EntityManager em = null;
 		EntityTransaction tx = null;
@@ -26,39 +26,9 @@ public class ReservationRepositoryJpa implements IReservationRepository{
 			tx = em.getTransaction();
 			tx.begin();
 
-			TypedQuery<Reservation> query = em.createQuery("select r from Reservation r", Reservation.class);
+			TypedQuery<Billet> query = em.createQuery("select b from Billet b", Billet.class);
 
-			reservations = query.getResultList();
-
-			tx.commit();
-		} catch (Exception e) {
-			e.printStackTrace();
-			if (tx != null && tx.isActive()) {
-				tx.rollback();
-			}
-
-		} finally {
-			if (em != null) {
-				em.close();
-			}
-		}
-		return reservations;
-	}
-
-
-	@Override
-	public Reservation findById(Long id) {
-		Reservation reservation = null;
-
-		EntityManager em = null;
-		EntityTransaction tx = null;
-
-		try {
-			em = Application.getInstance().getEntityManagerFactory().createEntityManager();
-			tx = em.getTransaction();
-			tx.begin();
-
-			reservation = em.find(Reservation.class, id);
+			billets = query.getResultList();
 
 			tx.commit();
 		} catch (Exception e) {
@@ -73,11 +43,42 @@ public class ReservationRepositoryJpa implements IReservationRepository{
 			}
 		}
 
-		return reservation;
+		return billets;
+		
 	}
 
 	@Override
-	public Reservation save(Reservation obj) {
+	public Billet findById(Long id) {
+		Billet billet = null;
+
+		EntityManager em = null;
+		EntityTransaction tx = null;
+
+		try {
+			em = Application.getInstance().getEntityManagerFactory().createEntityManager();
+			tx = em.getTransaction();
+			tx.begin();
+
+			billet = em.find(Billet.class, id);
+
+			tx.commit();
+		} catch (Exception e) {
+			e.printStackTrace();
+			if (tx != null && tx.isActive()) {
+				tx.rollback();
+			}
+
+		} finally {
+			if (em != null) {
+				em.close();
+			}
+		}
+
+		return billet;
+	}
+
+	@Override
+	public Billet save(Billet obj) {
 		EntityManager em = null;
 		EntityTransaction tx = null;
 
@@ -100,11 +101,12 @@ public class ReservationRepositoryJpa implements IReservationRepository{
 				em.close();
 			}
 		}
+
 		return obj;
 	}
 
 	@Override
-	public void delete(Reservation obj) {
+	public void delete(Billet obj) {
 		EntityManager em = null;
 		EntityTransaction tx = null;
 
@@ -127,6 +129,7 @@ public class ReservationRepositoryJpa implements IReservationRepository{
 				em.close();
 			}
 		}
+		
 	}
 
 }

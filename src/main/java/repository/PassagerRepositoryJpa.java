@@ -8,15 +8,14 @@ import javax.persistence.EntityTransaction;
 import javax.persistence.TypedQuery;
 
 import app.Application;
-import irepository.IReservationRepository;
-import metier.Reservation;
+import irepository.IPassagerRepository;
+import metier.Passager;
 
-public class ReservationRepositoryJpa implements IReservationRepository{
+public class PassagerRepositoryJpa implements IPassagerRepository{
 
 	@Override
-	public List<Reservation> findAll() {
-
-		List<Reservation> reservations = new ArrayList<Reservation>();
+	public List<Passager> findAll() {
+		List<Passager> passagers = new ArrayList<Passager>();
 
 		EntityManager em = null;
 		EntityTransaction tx = null;
@@ -26,39 +25,9 @@ public class ReservationRepositoryJpa implements IReservationRepository{
 			tx = em.getTransaction();
 			tx.begin();
 
-			TypedQuery<Reservation> query = em.createQuery("select r from Reservation r", Reservation.class);
+			TypedQuery<Passager> query = em.createQuery("select p from Passager p", Passager.class);
 
-			reservations = query.getResultList();
-
-			tx.commit();
-		} catch (Exception e) {
-			e.printStackTrace();
-			if (tx != null && tx.isActive()) {
-				tx.rollback();
-			}
-
-		} finally {
-			if (em != null) {
-				em.close();
-			}
-		}
-		return reservations;
-	}
-
-
-	@Override
-	public Reservation findById(Long id) {
-		Reservation reservation = null;
-
-		EntityManager em = null;
-		EntityTransaction tx = null;
-
-		try {
-			em = Application.getInstance().getEntityManagerFactory().createEntityManager();
-			tx = em.getTransaction();
-			tx.begin();
-
-			reservation = em.find(Reservation.class, id);
+			passagers = query.getResultList();
 
 			tx.commit();
 		} catch (Exception e) {
@@ -73,11 +42,41 @@ public class ReservationRepositoryJpa implements IReservationRepository{
 			}
 		}
 
-		return reservation;
+		return passagers;
 	}
 
 	@Override
-	public Reservation save(Reservation obj) {
+	public Passager findById(Long id) {
+		Passager passager = null;
+
+		EntityManager em = null;
+		EntityTransaction tx = null;
+
+		try {
+			em = Application.getInstance().getEntityManagerFactory().createEntityManager();
+			tx = em.getTransaction();
+			tx.begin();
+
+			passager = em.find(Passager.class, id);
+
+			tx.commit();
+		} catch (Exception e) {
+			e.printStackTrace();
+			if (tx != null && tx.isActive()) {
+				tx.rollback();
+			}
+
+		} finally {
+			if (em != null) {
+				em.close();
+			}
+		}
+
+		return passager;
+	}
+
+	@Override
+	public Passager save(Passager obj) {
 		EntityManager em = null;
 		EntityTransaction tx = null;
 
@@ -100,11 +99,12 @@ public class ReservationRepositoryJpa implements IReservationRepository{
 				em.close();
 			}
 		}
+
 		return obj;
 	}
 
 	@Override
-	public void delete(Reservation obj) {
+	public void delete(Passager obj) {
 		EntityManager em = null;
 		EntityTransaction tx = null;
 

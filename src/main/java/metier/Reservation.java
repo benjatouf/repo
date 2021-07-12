@@ -30,12 +30,12 @@ public class Reservation {
 	private Client client;
 	@ManyToOne
 	private Billet billet;
-	
-	
-	
+
+
+
 	public Reservation() {
 	}
-	
+
 	public Reservation(int version, Integer numero, Date dtReservation, StatutReservation confirme, Passager passager,
 			Client client, Billet billet) {
 		this.version = version;
@@ -150,6 +150,6 @@ public class Reservation {
 
 
 
-	
-	
+
+
 }
