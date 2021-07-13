@@ -1,5 +1,7 @@
 package metier;
 
+import java.util.List;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Table;
@@ -14,22 +16,21 @@ public class Particulier extends Client {
 	
 	
 
-	public Particulier(Long id, int version, String nom, String prenom) {
-		super(id, version, nom);
-		this.prenom = prenom;
+	
+	
+	public Particulier(int version, String nom, List<Adresse> adresse, List<Adresse> adresses) {
+		super(version, nom, adresse, adresses);
 	}
 
-	public Particulier(int version, String nom) {
-		super(version, nom);
+	public Particulier(Long id, int version, String nom, List<Adresse> adresse, List<Adresse> adresses) {
+		super(id, version, nom, adresse, adresses);
 	}
-	
+
 	public Particulier() {
 		super();
 		
 	}
 
-	
-	
 	
 	public String getPrenom() {
 		return prenom;
@@ -39,9 +40,6 @@ public class Particulier extends Client {
 		this.prenom = prenom;
 	}
 
-	
-	
-	
 	@Override
 	public String toString() {
 		return "Particulier [prenom=" + prenom + "]";
