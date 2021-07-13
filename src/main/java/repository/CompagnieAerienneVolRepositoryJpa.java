@@ -7,16 +7,14 @@ import javax.persistence.EntityManager;
 import javax.persistence.EntityTransaction;
 import javax.persistence.TypedQuery;
 
-import irepository.IReservationRepository;
-import metier.Reservation;
+import irepository.ICompagnieAerienneVolRepository;
+import metier.CompagnieAerienneVol;
 import sopra.formation.Ap.Application;
 
-public class ReservationRepositoryJpa implements IReservationRepository{
+public class CompagnieAerienneVolRepositoryJpa implements ICompagnieAerienneVolRepository{
 
-	@Override
-	public List<Reservation> findAll() {
-
-		List<Reservation> reservations = new ArrayList<Reservation>();
+	public List<CompagnieAerienneVol> findAll() {
+		List<CompagnieAerienneVol> compagnieAerienneVols = new ArrayList<CompagnieAerienneVol>();
 
 		EntityManager em = null;
 		EntityTransaction tx = null;
@@ -26,39 +24,9 @@ public class ReservationRepositoryJpa implements IReservationRepository{
 			tx = em.getTransaction();
 			tx.begin();
 
-			TypedQuery<Reservation> query = em.createQuery("select r from Reservation r", Reservation.class);
+			TypedQuery<CompagnieAerienneVol> query = em.createQuery("select e from CompagnieAerienneVol e", CompagnieAerienneVol.class);
 
-			reservations = query.getResultList();
-
-			tx.commit();
-		} catch (Exception e) {
-			e.printStackTrace();
-			if (tx != null && tx.isActive()) {
-				tx.rollback();
-			}
-
-		} finally {
-			if (em != null) {
-				em.close();
-			}
-		}
-		return reservations;
-	}
-
-
-	@Override
-	public Reservation findById(Long id) {
-		Reservation reservation = null;
-
-		EntityManager em = null;
-		EntityTransaction tx = null;
-
-		try {
-			em = Application.getInstance().getEntityManagerFactory().createEntityManager();
-			tx = em.getTransaction();
-			tx.begin();
-
-			reservation = em.find(Reservation.class, id);
+			compagnieAerienneVols = query.getResultList();
 
 			tx.commit();
 		} catch (Exception e) {
@@ -73,11 +41,39 @@ public class ReservationRepositoryJpa implements IReservationRepository{
 			}
 		}
 
-		return reservation;
+		return compagnieAerienneVols;
 	}
 
-	@Override
-	public Reservation save(Reservation obj) {
+	public CompagnieAerienneVol findById(Long id) {
+		CompagnieAerienneVol compagnieAerienneVol = null;
+
+		EntityManager em = null;
+		EntityTransaction tx = null;
+
+		try {
+			em = Application.getInstance().getEntityManagerFactory().createEntityManager();
+			tx = em.getTransaction();
+			tx.begin();
+
+			compagnieAerienneVol = em.find(CompagnieAerienneVol.class, id);
+
+			tx.commit();
+		} catch (Exception e) {
+			e.printStackTrace();
+			if (tx != null && tx.isActive()) {
+				tx.rollback();
+			}
+
+		} finally {
+			if (em != null) {
+				em.close();
+			}
+		}
+
+		return compagnieAerienneVol;
+	}
+
+	public CompagnieAerienneVol save(CompagnieAerienneVol obj) {
 		EntityManager em = null;
 		EntityTransaction tx = null;
 
@@ -100,11 +96,11 @@ public class ReservationRepositoryJpa implements IReservationRepository{
 				em.close();
 			}
 		}
+
 		return obj;
 	}
 
-	@Override
-	public void delete(Reservation obj) {
+	public void delete(CompagnieAerienneVol obj) {
 		EntityManager em = null;
 		EntityTransaction tx = null;
 

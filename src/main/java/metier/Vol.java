@@ -28,7 +28,7 @@ public class Vol {
 	@Column(name = "dtArrival")
 	private String dtArrivee;
 	@Column(name = "Flight Status")
-	private StatusVol statut;
+	private StatutVol statut;
 	@Column(name = "Available seats")
 	private int nbPlaceDispo;
 	@ManyToOne
@@ -37,9 +37,12 @@ public class Vol {
 	@ManyToOne
 	@JoinColumn(name = "Ticket")
 	private Billet billet;
+	@Column(name="arrival")
+	private Aeroport arrivee;
+	@Column(name="departure")
+	private Aeroport depart;
 	
-	
-	public Vol(Long id, int version, Date dtDepart, String dtArrivee, StatusVol statut, int nbPlaceDispo,
+	public Vol(Long id, int version, Date dtDepart, String dtArrivee, StatutVol statut, int nbPlaceDispo,
 			CompagnieAerienneVol compagnieAerienneVol, Billet billet) {
 		this.id = id;
 		this.version = version;
@@ -51,7 +54,7 @@ public class Vol {
 		this.billet = billet;
 	}
 
-	public Vol(int version, Date dtDepart, String dtArrivee, StatusVol statut, int nbPlaceDispo,
+	public Vol(int version, Date dtDepart, String dtArrivee, StatutVol statut, int nbPlaceDispo,
 			CompagnieAerienneVol compagnieAerienneVol, Billet billet) {
 		this.version = version;
 		this.dtDepart = dtDepart;
@@ -66,8 +69,6 @@ public class Vol {
 	public Vol() {
 		super();
 	}
-
-
 
 
 	public Long getId() {
@@ -110,12 +111,12 @@ public class Vol {
 	}
 
 
-	public StatusVol getStatut() {
+	public StatutVol getStatut() {
 		return statut;
 	}
 
 
-	public void setStatut(StatusVol statut) {
+	public void setStatut(StatutVol statut) {
 		this.statut = statut;
 	}
 

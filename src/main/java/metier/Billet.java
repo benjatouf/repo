@@ -11,8 +11,6 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Version;
 
-import sopra.formation.model.UE;
-
 @Entity
 @Table(name = "Billet")
 public class Billet {
@@ -33,32 +31,35 @@ public class Billet {
 	
 	
 	
+	
 	public Billet() {
 	}
 
-
-	public Billet(int version, String numeroPlace, String classe, float prix) {
+	public Billet(int version, String numeroPlace, String classe, float prix, List<Reservation> reservations,
+			List<Vol> vols) {
 		this.version = version;
 		this.numeroPlace = numeroPlace;
 		this.classe = classe;
 		this.prix = prix;
+		this.reservations = reservations;
+		this.vols = vols;
 	}
 
-
-
-	public Billet(Long id, int version, String numeroPlace, String classe, float prix) {
+	public Billet(Long id, int version, String numeroPlace, String classe, float prix, List<Reservation> reservations,
+			List<Vol> vols) {
 		this.id = id;
 		this.version = version;
 		this.numeroPlace = numeroPlace;
 		this.classe = classe;
 		this.prix = prix;
+		this.reservations = reservations;
+		this.vols = vols;
 	}
-
 
 	@Override
 	public String toString() {
 		return "Billet [id=" + id + ", version=" + version + ", numeroPlace=" + numeroPlace + ", classe=" + classe
-				+ ", prix=" + prix + "]";
+				+ ", prix=" + prix + ", reservations=" + reservations + ", vols=" + vols + "]";
 	}
 	
 	
