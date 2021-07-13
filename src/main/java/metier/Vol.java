@@ -38,9 +38,9 @@ public class Vol {
 	@ManyToOne
 	@JoinColumn(name = "Ticket")
 	private Billet billet;
-	@OneToOne
+	@Column(name="arrival")
 	private Aeroport arrivee;
-	@OneToOne
+	@Column(name="departure")
 	private Aeroport depart;
 	
 	public Vol(Long id, int version, Date dtDepart, String dtArrivee, StatusVol statut, int nbPlaceDispo,
@@ -70,8 +70,6 @@ public class Vol {
 	public Vol() {
 		super();
 	}
-
-
 
 
 	public Long getId() {
