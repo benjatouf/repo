@@ -39,8 +39,8 @@ public class Application {
 	private final IPassagerRepository passagerRepo = new PassagerRepositoryJpa();
 	
 	private final IVolRepository volRepo = new VolRepositoryJpa();
-	private final ICompagnieAerienneVolRepository compagnieAerienneRepo = new CompagnieAerienneVolRepositoryJpa();
-	private final ICompagnieAerienneRepository compagnieAerienneVolRepo = new CompagnieAerienneRepositoryJpa();
+	private final ICompagnieAerienneVolRepository compagnieAerienneVolRepo = new CompagnieAerienneVolRepositoryJpa();
+	private final ICompagnieAerienneRepository compagnieAerienneRepo = new CompagnieAerienneRepositoryJpa();
 	private final IAeroportRepository aeroportRepo = new AeroportRepositoryJpa();
 	private final IVilleRepository villeRepo = new VilleRepositoryJpa();
 	
@@ -79,13 +79,12 @@ public class Application {
 		return volRepo;
 	}
 
-
-	public ICompagnieAerienneVolRepository getCompagnieAerienneRepo() {
-		return compagnieAerienneRepo;
+	public ICompagnieAerienneVolRepository getCompagnieAerienneVolRepo() {
+		return compagnieAerienneVolRepo;
 	}
 
-	public ICompagnieAerienneRepository getCompagnieAerienneVolRepo() {
-		return compagnieAerienneVolRepo;
+	public ICompagnieAerienneRepository getCompagnieAerienneRepo() {
+		return compagnieAerienneRepo;
 	}
 
 	public IAeroportRepository getAeroportRepo() {
