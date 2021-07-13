@@ -27,11 +27,7 @@ public class Vol {
 	private Date dtDepart;
 	@Column(name = "dtArrival")
 	private String dtArrivee;
-<<<<<<< HEAD
-	@Column(name = "Flight Status")
-=======
 	@Column(name = "Flight Statut")
->>>>>>> Xavier
 	private StatutVol statut;
 	@Column(name = "Available seats")
 	private int nbPlaceDispo;
