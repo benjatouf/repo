@@ -27,7 +27,7 @@ public class Vol {
 	private Date dtDepart;
 	@Column(name = "dtArrival")
 	private String dtArrivee;
-	@Column(name = "Flight Statut")
+	@Column(name = "Flight Status")
 	private StatutVol statut;
 	@Column(name = "Available seats")
 	private int nbPlaceDispo;
