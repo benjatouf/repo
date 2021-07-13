@@ -7,9 +7,9 @@ import javax.persistence.EntityManager;
 import javax.persistence.EntityTransaction;
 import javax.persistence.TypedQuery;
 
-import app.Application;
 import irepository.IPassagerRepository;
 import metier.Passager;
+import sopra.formation.Ap.Application;
 
 public class PassagerRepositoryJpa implements IPassagerRepository{
 

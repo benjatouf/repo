@@ -7,9 +7,9 @@ import javax.persistence.EntityManager;
 import javax.persistence.EntityTransaction;
 import javax.persistence.TypedQuery;
 
-import app.Application;
 import irepository.IReservationRepository;
 import metier.Reservation;
+import sopra.formation.Ap.Application;
 
 public class ReservationRepositoryJpa implements IReservationRepository{
 

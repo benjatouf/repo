@@ -7,9 +7,9 @@ import javax.persistence.EntityManager;
 import javax.persistence.EntityTransaction;
 import javax.persistence.TypedQuery;
 
-import app.Application;
 import irepository.IBilletRepository;
 import metier.Billet;
+import sopra.formation.Ap.Application;
 
 public class BilletRepositoryJpa implements IBilletRepository{
 
