@@ -9,7 +9,7 @@ import javax.persistence.TypedQuery;
 
 import irepository.IAeroportRepository;
 import metier.Aeroport;
-import sopra.formation.Application;
+import sopra.formation.Ap.Application;
 
 public class AeroportRepositoryJpa implements IAeroportRepository{
 
