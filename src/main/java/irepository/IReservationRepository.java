@@ -1,5 +1,7 @@
 package irepository;
 
-public interface IReservationRepository {
+import metier.Reservation;
+
+public interface IReservationRepository extends IRepository<Reservation, Long> {
 
 }
