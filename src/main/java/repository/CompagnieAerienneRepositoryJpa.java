@@ -9,7 +9,7 @@ import javax.persistence.TypedQuery;
 
 import irepository.ICompagnieAerienneRepository;
 import metier.CompagnieAerienne;
-import sopra.formation.Application;
+import sopra.formation.Ap.Application;
 
 public class CompagnieAerienneRepositoryJpa implements ICompagnieAerienneRepository{
 

@@ -9,7 +9,7 @@ import javax.persistence.TypedQuery;
 
 import irepository.IVilleRepository;
 import metier.Ville;
-import sopra.formation.Application;
+import sopra.formation.Ap.Application;
 
 public class VilleRepositoryJpa implements IVilleRepository{
 

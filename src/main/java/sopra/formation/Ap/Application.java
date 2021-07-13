@@ -3,15 +3,29 @@ package sopra.formation.Ap;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 
+import irepository.IAdresseRepository;
+import irepository.IAeroportRepository;
 import irepository.IBilletRepository;
 import irepository.IClientRepository;
+import irepository.ICompagnieAerienneRepository;
 import irepository.ICompagnieAerienneVolRepository;
+import irepository.IEntrepriseRepository;
+import irepository.IParticulierRepository;
 import irepository.IPassagerRepository;
 import irepository.IReservationRepository;
+import irepository.IVilleRepository;
 import irepository.IVolRepository;
+import repository.AdresseRepositoryJpa;
+import repository.AeroportRepositoryJpa;
 import repository.BilletRepositoryJpa;
+import repository.ClientRepositoryJpa;
+import repository.CompagnieAerienneRepositoryJpa;
+import repository.CompagnieAerienneVolRepositoryJpa;
+import repository.EntrepriseRepositoryJpa;
+import repository.ParticulierRepositoryJpa;
 import repository.PassagerRepositoryJpa;
 import repository.ReservationRepositoryJpa;
+import repository.VilleRepositoryJpa;
 import repository.VolRepositoryJpa;
 
 public class Application {
@@ -26,7 +40,7 @@ public class Application {
 	
 	private final IVolRepository volRepo = new VolRepositoryJpa();
 	private final ICompagnieAerienneVolRepository compagnieAerienneRepo = new CompagnieAerienneVolRepositoryJpa();
-	private final ICompagnieAerienneRepository compagnieAerienneRepo = new CompagnieAerienneRepositoryJpa();
+	private final ICompagnieAerienneRepository compagnieAerienneVolRepo = new CompagnieAerienneRepositoryJpa();
 	private final IAeroportRepository aeroportRepo = new AeroportRepositoryJpa();
 	private final IVilleRepository villeRepo = new VilleRepositoryJpa();
 	
@@ -65,12 +79,13 @@ public class Application {
 		return volRepo;
 	}
 
+
 	public ICompagnieAerienneVolRepository getCompagnieAerienneRepo() {
 		return compagnieAerienneRepo;
 	}
 
-	public ICompagnieAerienneRepository getCompagnieAerienneRepo() {
-		return compagnieAerienneRepo;
+	public ICompagnieAerienneRepository getCompagnieAerienneVolRepo() {
+		return compagnieAerienneVolRepo;
 	}
 
 	public IAeroportRepository getAeroportRepo() {
