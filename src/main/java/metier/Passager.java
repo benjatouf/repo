@@ -11,7 +11,7 @@ import javax.persistence.Version;
 @Entity
 @Table(name = "Passager")
 public class Passager {
-	
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
@@ -22,10 +22,10 @@ public class Passager {
 	private TypeIdentite typeIdentite;
 	@OneToOne(mappedBy = "passager")
 	private Reservation reservation;
-	
 
-	
-	
+
+
+
 	public Passager() {
 	}
 
@@ -100,9 +100,9 @@ public class Passager {
 		return "Passager [id=" + id + ", version=" + version + ", nom=" + nom + ", prenom=" + prenom + ", typeIdentite="
 				+ typeIdentite + ", reservation=" + reservation + "]";
 	}
-	
-	
-	
-	
-	
+
+
+
+
+
 }
